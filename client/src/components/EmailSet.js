@@ -1,9 +1,12 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import { Input, Radio, Space, Button, message, Modal } from 'antd';
+import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
 import "../App.css";
 const API_HOST = process.env.REACT_APP_BASE_URL
 
 const EmailSet = () => {
+    const captchaRef = useRef(null);
     const [value, setValue] = useState(1);
     const [name, setName] = useState("");
     const [lastname, setLastname] = useState("");
@@ -166,6 +169,9 @@ const EmailSet = () => {
                 <div style={{color: "red"}} className={`messages ${isValid ? 'success' : 'error'}`}>
                     {messages}
                 </div>
+            </div>
+            <div style={{paddingTop: "20px"}}>
+                <ReCAPTCHA theme="dark" sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} />
             </div>
             <div style={{paddingTop: "20px"}}>
                 <Button onClick={() => showModal()} style={{ width: "120px"}} type="primary" danger>

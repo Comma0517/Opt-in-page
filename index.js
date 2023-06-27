@@ -144,9 +144,7 @@ app.post("/SendInitEmail", async (req, res) => {
         name: 'Applied Mold Inspection of Texas',
         email: 'info@amoldi.com'
       }, 
-      subject: 'Mold Inspection (inspection of m... Quote Request (quote request ...',
-      text: 'Mold Inspection and Quote Request',
-      html: ' <Strong >Applied Mold Inspection of Texas<Strong/><br><p>Tax & BlockTM: A Peer-to-Peer Electronic Tax Ecosystem<p/>An ecosystem of tax Apps and services that use machine-enforceable Inter-Blockchain Communication (IBC) protocol to exchange digital assets and data. Tax & Block, a trademark of Pitshou Solutions LLC, aims to provide the best tax filing solutions that reshape tax professionals’ businesses, meet taxpayers’ needs, and potentially serve as a high-impact use case for tax administration improvement using blockchain technology. In the presence of intense competition going on between tax preparation software and tax preparation services, most taxpayers primarily opt for tax preparation software to save some cash. While the tax software option offers flexibility and upfront money saving, this underscores the potential of getting out of your hard work and the maximization of tax returns and/or minimization of tax liability in the back end, especially when dealing with complex taxes. <br>Thank you.',
+      template_id: process.env.DYNAMIC_TEMPLATE_ID,
     }
 
     sgMail
