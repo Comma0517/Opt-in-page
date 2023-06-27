@@ -12,10 +12,11 @@ const EmailSet = () => {
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
     const [isValid, setIsValid] = useState(false);
-    const [messages, setMessages] = useState("");
+    const [messages, setMessage] = useState("");
     const [messageApi, contextHolder] = message.useMessage();
     const [verifyCode, setVerifyCode] = useState(0);
     const [num, setNum] = useState(0);
+    const [error, setError] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const emailRegex = /\S+@\S+\.\S+/;
     let number;
@@ -24,8 +25,22 @@ const EmailSet = () => {
       setValue(e.target.value);
     };
 
-    const showModal = () => {
+    const showModal = async () => {                  
         insertUser();
+
+        // setError('');
+        // setMessage('');
+        // let token = captchaRef.current.getValue();
+        // if(token){
+        //     let valid_token = await verifyToken(token);
+        //     if(valid_token.success){
+        //         setMessage("Hurray!! you have submitted the form");  
+        //     }else{
+        //         setError("Sorry!! Token invalid");
+        //     }
+        // }else{
+        //     setError("You must confirm you are not a robot");
+        // }
     };
 
     const handleCancel = () => {
@@ -37,10 +52,10 @@ const EmailSet = () => {
         if (emailRegex.test(email)) {
             setIsValid(true);        
             setEmail(email);
-            setMessages('');
+            setMessage('');
         } else {
             setIsValid(false);
-            setMessages('Please enter a valid email!');
+            setMessage('Please enter a valid email!');
         }
     }
 
@@ -133,12 +148,25 @@ const EmailSet = () => {
         });
     };
 
+    const verifyToken = async (token) => {
+        try{
+        let response = await axios.post(`${API_HOST}/verify-token`,{
+           
+            secret:process.env.REACT_APP_SECRET_KEY,
+            token
+        },console.log(token));
+        return response.data;
+        }catch(error){
+        console.log("error ",error);
+        }
+    }
+
   return (
     <Fragment>
         {contextHolder}
         <Modal width="300px" title="Email Verification" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
             <Input onChange={(e) => setVerifyCode(e.target.value)}  size="large" placeholder="Enter Verify Code" />
-        </Modal>
+        </Modal>  
         <div className="emailSet">
             <div>
               <p style={{color: "white", textAlignLast: "center", fontSize: "22px"}}>Applying scientific knowledge and technology to thoroughly inspect buildings for mold growth related problems.</p>
@@ -170,11 +198,14 @@ const EmailSet = () => {
                     {messages}
                 </div>
             </div>
-            <div style={{paddingTop: "20px"}}>
+            <div style={{paddingTop: "20px"}}>                            
+                {
+                    error && <p className='textError' style={{color: "red"}}>Error!! {error}</p>
+                }
                 <ReCAPTCHA theme="dark" sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} />
             </div>
             <div style={{paddingTop: "20px"}}>
-                <Button onClick={() => showModal()} style={{ width: "120px"}} type="primary" danger>
+                <Button onClick={() => showModal()} size="large" style={{ width: "120px"}} type="primary" danger>
                     Submit
                 </Button>
             </div>

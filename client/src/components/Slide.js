@@ -10,7 +10,7 @@ const Slide = () => {
         <div style={{paddingBottom: "30px"}}>
             <img style={{width: "33.3%"}} src={slide1} alt="slide1"/> 
             <img style={{width: "33.3%"}} src={slide2} alt="slide2"/> 
-            <img style={{width: "33.3%"}} src={slide3} alt="slide"/> 
+            <img style={{width: "33.3%"}} src={slide3} alt="slide3"/> 
         </div>
     </Fragment>
   );

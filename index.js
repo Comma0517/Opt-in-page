@@ -176,3 +176,21 @@ app.post("/insert", async (req, res) => {
   }
 });
 
+app.post("/verify-token", async (req,res) => {
+  try{
+      let ,token = req.body;
+      // replace APP_SECRET_KEY with your reCAPTCHA secret key
+      let response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.APP_SECRET_KEY}&response=${token}`);
+      return res.status(200).json({
+          success:true,
+          message: "Token successfully verified",
+          data: response.data
+      });
+  }catch(error){
+      return res.status(500).json({
+          success:false,
+          message: "Error verifying token"
+      })
+  }
+});
+

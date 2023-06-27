@@ -107,14 +107,14 @@
   border-radius: 15px;
   border-style: solid;
   border-width: 1px;
-  border-color: white;
+  border-color: rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .ant-btn-primary.ant-btn-dangerous{
-  background-color: red;
+  background-color: rgb(190, 10, 47);
   box-shadow: 0 2px 0 rgba(255, 38, 5, 0.06);
 }
 
@@ -123,7 +123,7 @@
   font-size: 16px;
   line-height: 1.5;
   border-radius: 8px;
-  border-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
   background-color: rgb(24, 19, 85);
 }
 
@@ -162,18 +162,18 @@
 
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector{
   background-color: rgb(4 2 22 / 88%);
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input)  .ant-select-selector::placeholder{
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
 }
 .ant-select-single.ant-select-sm.ant-select-open .ant-select-selection-item {
   color: rgb(255 255 255 / 60%);
 }
 
 .anticon{
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .ant-modal .ant-modal-content {

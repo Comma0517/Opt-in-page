@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <p style={{color: "yellow", textAlignLast: "center"}}>Powered by Pitshou Solutions LLC</p>
         <p style={{color: "white", textAlignLast: "center"}}>Applied Mold Inspection of Texas, c/o Pitshou Solutions LLC, 1000 Main Street Suite 2300, Houston TX 77002</p>
-        <Divider style={{backgroundColor: "white", margin: "20px 0 15px 0"}}></Divider>
+        <Divider style={{backgroundColor: "rgba(255, 255, 255, 0.6)", margin: "20px 0 15px 0"}}></Divider>
         <Row
             gutter={{
                 xs: 8,

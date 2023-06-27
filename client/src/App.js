@@ -58,7 +58,7 @@ function App() {
               />
             </div>      
           </div>
-          <Divider style={{margin: "1px", backgroundColor: "white"}}/>
+          <Divider style={{margin: "1px", backgroundColor: "rgba(255, 255, 255, 0.6)"}}/>
           <div className="window-grid">
             <EmailSet />
           </div>
