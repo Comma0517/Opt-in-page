@@ -71,21 +71,31 @@
 
 @media (max-width: 768px){
   .langBar{
-      padding-left: 40%;
+      padding-left: 30%;
   }
 }
 
 @media (max-width: 520px){
   .langBar{
-      padding-left: 10%;
+      padding-left: 0%;
   }
 }
 
 .headerLogo{
   width: 200px;
+} 
+
+.headerLine{
+  padding-left: 3%
 }
 
-@media (max-width: 300px){
+@media (max-width: 350px){
+  .headerLine{
+    padding-left: 0%
+  }
+}
+
+@media (max-width: 350px){
   .headerLogo{
       width: 140px;
   }
@@ -103,6 +113,10 @@
   gap: 12px;
 }
 
+.ant-btn-primary.ant-btn-dangerous{
+  background-color: red;
+  box-shadow: 0 2px 0 rgba(255, 38, 5, 0.06);
+}
 
 .ant-input-lg{
   padding: 7px 11px;

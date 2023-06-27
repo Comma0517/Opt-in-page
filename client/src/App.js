@@ -1,27 +1,29 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./App.css";
+import "./flag.css";
+import ReactFlagsSelect from "react-flags-select";
 import background from "./public/Background.png"
 import logo from "./public/Logo.png"
-import { Divider, Select} from 'antd';
+import { Divider} from 'antd';
 import EmailSet from "./components/EmailSet";
 import Slide from "./components/Slide";
 import Footer from "./components/Footer";
 
 
 function App() {
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
+  const [select, setSelect] = useState("US");
+  const onSelect = (code) => setSelect(code);
+  console.log("SELECT", select);
   return (
     <Fragment >
       <div className="background" style={{ backgroundImage: `url(${background})`}}>
         <div className="container">
-          <div style={{paddingLeft: "3%", display: "flex"}}>          
+          <div className="headerLine" style={{display: "flex"}}>          
             <div>
               <img className="headerLogo" src={logo} alt="logo"/>
             </div>            
             <div className="langBar" style={{paddingTop: "45px"}}>
-              <Select
+              {/* <Select
                 size="small"
                 defaultValue="English"
                 style={{
@@ -38,7 +40,22 @@ function App() {
                     label: 'Spanish',
                   }
                 ]}
-              />      
+              />       */}
+              <ReactFlagsSelect
+                selected={select}
+                onSelect={onSelect}
+                countries={["US", "ES"]}
+                selectedSize={11}
+                optionsSize={11}
+                /*showSelectedLabel={showSelectedLabel}
+                showOptionLabel={showOptionLabel}
+                placeholder={placeholder}
+                searchable={searchable}
+                searchPlaceholder={searchPlaceholder}
+                alignOptionsToRight={alignOptionsToRight}
+                fullWidth={fullWidth}
+                disabled={disabled} */
+              />
             </div>      
           </div>
           <Divider style={{margin: "1px", backgroundColor: "white"}}/>
